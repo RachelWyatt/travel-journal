@@ -12,6 +12,10 @@ class TripsController < ApplicationController
             render :new 
         end
     end
+
+    def show 
+        @trip = Trip.find(params[:id])
+    end
     
     private 
         def post_params 
