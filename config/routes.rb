@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'static#welcome'
 
   resources :trips do 
-    resources :trip_entry, shallow: true
+    resources :trip_entries, shallow: true
   end
 
   resources :users, only: [:new, :create, :show]
