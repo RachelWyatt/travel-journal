@@ -1,1 +1,5 @@
-<%= @trip.name %>
+<h1><%= @trip.name %></h1><br>
+<% @trip_entries.each do |e|%>
+    <p><%= e.journal_entry%></p>
+    <br>
+<% end %>

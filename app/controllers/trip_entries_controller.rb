@@ -1,6 +1,7 @@
 class TripEntriesController < ApplicationController
 
     def index 
+        @trip = Trip.find(params[:id])
     end 
 
     def new 
