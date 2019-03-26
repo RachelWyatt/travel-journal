@@ -1,7 +1,12 @@
 class TripEntriesController < ApplicationController
 
     def index 
-        @trip = Trip.find(params[:id])
+        if params[:trip_id]
+            @trip = Trip.find(params[:trip_id])
+            @trip_entries = @trip.trip_entries
+        else 
+            redirect_to root_path
+        end
     end 
 
     def new 
