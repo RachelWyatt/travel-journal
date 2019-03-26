@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-
+before_action :redirect_if_not_authorized, only: [:show]
     def new 
         @trip = Trip.new
     end
@@ -21,6 +21,13 @@ class TripsController < ApplicationController
     private 
         def post_params 
             params.require(:trip).permit(:name)
+        end
+
+        def redirect_if_not_authorized 
+            @trip = Trip.find(params[:id])
+            if @trip.user_id != current_user.id
+                redirect_to root_path
+            end
         end
 
 end

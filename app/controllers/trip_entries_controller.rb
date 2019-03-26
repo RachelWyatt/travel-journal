@@ -5,6 +5,7 @@ class TripEntriesController < ApplicationController
     end 
 
     def new 
+        @trip_entry = TripEntry.new
     end
 
     def create 
