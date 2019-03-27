@@ -6,8 +6,12 @@ Rails.application.routes.draw do
     resources :trip_entries, shallow: true
   end
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:show]
 
-  resources :sessions, only: [:new, :create, :destroy]
+  get '/signup', to: 'users#new'
+  get '/signup', to: 'users#create'
+
+  get '/login', to: 'sessions#new'
+  get '/login', to: 'sessions#create'
 
 end
