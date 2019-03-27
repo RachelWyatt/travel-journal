@@ -1,4 +1,12 @@
 <h2> Sign up for a new account </h2>
+
+<%if @user.errors%>
+    <% @user.errors.full_messages.each do |error|%>
+        <%= error %>
+    <%br%>
+    <% end %>
+<% end %>
+
 <%=form_for @user, url: signup_path do |f|%>
 <%=f.label :email%>
 <%=f.text_field :email%>
