@@ -5,7 +5,8 @@ before_action :redirect_if_not_authorized, only: [:show]
     end
 
     def create 
-        @trip = current_user.trips.new(post_params)
+
+        @trip = current_user.trips.new(trip_params)
         if @trip.save
             redirect_to trip_path(@trip)
         else 
@@ -16,6 +17,8 @@ before_action :redirect_if_not_authorized, only: [:show]
     def show 
         @trip = Trip.find(params[:id])
         @trip_entries = @trip.trip_entries
+        @trip_entry = TripEntry.new
+
     end
 
     def index 
@@ -23,8 +26,8 @@ before_action :redirect_if_not_authorized, only: [:show]
     end
     
     private 
-        def post_params 
-            params.require(:trip).permit(:name)
+        def trip_params 
+            params.require(:trip).permit(:name, :user_id)
         end
 
         def redirect_if_not_authorized 

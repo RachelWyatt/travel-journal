@@ -13,7 +13,14 @@ class TripEntriesController < ApplicationController
         @trip_entry = TripEntry.new
     end
 
-    def create 
+    def create
+        byebug
+        @trip_entry = current_user.trip_entries.new(trip_entry_params)
+        if @trip_entry.save
+            redirect_to root_path
+        else 
+            render :new 
+        end
     end 
 
     def show 
@@ -23,5 +30,10 @@ class TripEntriesController < ApplicationController
     end 
 
     def destroy
+    end
+
+    private 
+    def trip_entry_params 
+        params.require(:trip_entry).permit(:journal_entry, :trip_id)
     end
 end
