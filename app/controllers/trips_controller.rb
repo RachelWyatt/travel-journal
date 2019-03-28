@@ -17,6 +17,10 @@ before_action :redirect_if_not_authorized, only: [:show]
         @trip = Trip.find(params[:id])
         @trip_entries = @trip.trip_entries
     end
+
+    def index 
+        @trips = Trip.all
+    end
     
     private 
         def post_params 
