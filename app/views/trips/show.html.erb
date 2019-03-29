@@ -1,5 +1,7 @@
 <h1><%= @trip.name %></h1><br>
 <% @trip_entries.each do |e|%>
-    <%= e.journal_entry%>
+    <%= link_to "#{e.journal_entry}", trip_entry_path(e)%>
     <br>
 <% end %>
+
+<%=link_to "Add an Entry to this trip", new_trip_trip_entry_path(@trip)%>
