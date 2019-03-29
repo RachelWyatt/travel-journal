@@ -23,6 +23,9 @@ before_action :redirect_if_not_authorized, only: [:show]
 
     def index 
         @trips = Trip.all
+        if !logged_in?
+            redirect_to welcome_path 
+        end
     end
     
     private 
@@ -31,9 +34,9 @@ before_action :redirect_if_not_authorized, only: [:show]
         end
 
         def redirect_if_not_authorized 
-            @trip = Trip.find_by_id(params[:id])
-            if current_user == nil || @trip.user_id != current_user.id
-                redirect_to root_path
+            @trip = Trip.find(params[:id])
+            if current_user == nil || @trip.user.id != current_user.id
+                redirect_to welcome_path
             end
         end
 
