@@ -31,8 +31,8 @@ before_action :redirect_if_not_authorized, only: [:show]
         end
 
         def redirect_if_not_authorized 
-            @trip = Trip.find(params[:id])
-            if @trip.user_id != current_user.id
+            @trip = Trip.find_by_id(params[:id])
+            if current_user == nil || @trip.user_id != current_user.id
                 redirect_to root_path
             end
         end
