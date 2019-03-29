@@ -1,6 +1,7 @@
 <%= form_for @trip_entry, url: trip_trip_entries_path do |f|%>
 <%= f.label :journal_entry %>
 <%= f.text_field :journal_entry%>
+<%= f.collection_select :location_id, Location.all, :id, :name %>
 <%= f.hidden_field :trip_id%>
 <%= f.submit %>
 <% end %>

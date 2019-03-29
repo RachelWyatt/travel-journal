@@ -10,12 +10,12 @@ class TripEntriesController < ApplicationController
     end 
 
     def new 
-        @trip_entry = TripEntry.new
+        @trip_entry = TripEntry.new(trip_id: params[:trip_id])
     end
 
     def create
+        @trip_entry = TripEntry.new(trip_entry_params)
         byebug
-        @trip_entry = current_user.trip_entries.new(trip_entry_params)
         if @trip_entry.save
             redirect_to root_path
         else 
@@ -34,6 +34,10 @@ class TripEntriesController < ApplicationController
 
     private 
     def trip_entry_params 
-        params.require(:trip_entry).permit(:journal_entry, :trip_id)
+        params.require(:trip_entry).permit(:journal_entry, :trip_id, :location_id, :created_at, :updated_at)
+    end
+
+    def location_params 
+        params.require(:location).permit(:name)
     end
 end
