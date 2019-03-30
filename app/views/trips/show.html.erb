@@ -1,7 +1,15 @@
-<h1><%= @trip.name %></h1><br>
+<h2 class = "ml-5"><%= @trip.name %></h2><br>
+<div class="container p-3">
+<div class="row justify-content-md-center">
 <% @trip_entries.each do |e|%>
+    <span class = "border p-3">
+    <div class="col col-md-auto ml-md-auto">
     <%= link_to "#{e.journal_entry}", trip_entry_path(e)%>
+    </div>
+    </span>
     <br>
 <% end %>
+</div>
+</div>
 
-<%=link_to "Add an Entry to this trip", new_trip_trip_entry_path(@trip)%>
+<button type = "button" class="btn btn-outline-primary ml-5"> <%=link_to "Add an Entry to this trip", new_trip_trip_entry_path(@trip)%></button>
