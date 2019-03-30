@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
+  resources :locations, only: [:new, :create]
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'

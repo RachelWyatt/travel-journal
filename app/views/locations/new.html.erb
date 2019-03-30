@@ -1,0 +1,21 @@
+<h2> Create a New Location </h2>
+
+<div class = "ml-5">
+
+<% if @location.errors.any?%>
+    <div class="alert alert-warning" role="alert">
+    <% @location.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </div>
+<%end%>
+
+<%= form_for @location, url: locations_path do |f|%>
+<div class="form-group">
+<%= f.label :name %>
+<%= f.text_field :name%>
+</div>
+<br>
+<%= f.submit 'Create Location', :class => "btn btn-primary" %>
+<% end %>
+</div>
