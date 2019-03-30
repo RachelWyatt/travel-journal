@@ -1,8 +1,17 @@
 <div class = "ml-5">
+
+<% if @trip_entry.errors.any?%>
+    <div class="alert alert-warning" role="alert">
+    <% @trip_entry.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </div>
+<%end%>
+
 <%= form_for @trip_entry, url: trip_trip_entries_path do |f|%>
 <div class="form-group">
 <%= f.label :journal_entry %>
-<%= f.text_field :journal_entry%>
+<%= f.text_area :journal_entry%>
 <small id="journal entry help block" class="form-text text-muted">
   Remember to keep your entry short and sweet--180 characters or less!
 </small>

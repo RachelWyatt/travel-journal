@@ -18,7 +18,7 @@ before_action :redirect_if_not_authorized, only: [:index]
         if @trip_entry.save
             redirect_to root_path
         else 
-            render :new 
+            render 'trip_entries/new'
         end
     end 
 
