@@ -24,7 +24,11 @@
   </nav>
 
     <br>
-    <%= flash[:message] if flash[:message]%>
+    <% if flash[:message]%>
+    <div class="alert alert-warning" role="alert">
+    <%= flash[:message]%>
+    <%end%>
+    </div>
     <%= yield %>
   </body>
 </html>
