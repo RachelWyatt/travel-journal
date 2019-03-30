@@ -1,11 +1,11 @@
 class TripsController < ApplicationController
 before_action :redirect_if_not_authorized, only: [:show]
+before_action :redirect_if_not_logged_in, only: [:new, :index]
     def new 
         @trip = Trip.new
     end
 
     def create 
-
         @trip = current_user.trips.new(trip_params)
         if @trip.save
             redirect_to trip_path(@trip)
@@ -18,14 +18,10 @@ before_action :redirect_if_not_authorized, only: [:show]
         @trip = Trip.find(params[:id])
         @trip_entries = @trip.trip_entries
         @trip_entry = TripEntry.new
-
     end
 
     def index 
         @trips = Trip.all
-        if !logged_in?
-            redirect_to welcome_path 
-        end
     end
     
     private 
@@ -37,6 +33,12 @@ before_action :redirect_if_not_authorized, only: [:show]
             @trip = Trip.find(params[:id])
             if current_user == nil || @trip.user.id != current_user.id
                 redirect_to welcome_path
+            end
+        end
+
+        def redirect_if_not_logged_in
+            if !logged_in? 
+                redirect_to welcome_path 
             end
         end
 
