@@ -1,7 +1,18 @@
+<div class = "ml-5">
 <%= form_for @trip_entry, url: trip_trip_entries_path do |f|%>
+<div class="form-group">
 <%= f.label :journal_entry %>
 <%= f.text_field :journal_entry%>
+<small id="journal entry help block" class="form-text text-muted">
+  Remember to keep your entry short and sweet--180 characters or less!
+</small>
+</div>
+<div class="form-group">
+<%= f.label :location %>
 <%= f.collection_select :location_id, Location.all, :id, :name %>
+</form>
 <%= f.hidden_field :trip_id%>
-<%= f.submit %>
+<br>
+<%= f.submit 'Add Entry', :class => "btn btn-primary" %>
 <% end %>
+</div>
