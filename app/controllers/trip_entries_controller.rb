@@ -1,5 +1,5 @@
 class TripEntriesController < ApplicationController
-
+before_action :redirect_if_not_authorized, only: [:index]
     def index 
         if params[:trip_id]
             @trip = Trip.find(params[:trip_id])
@@ -38,5 +38,13 @@ class TripEntriesController < ApplicationController
 
     def location_params 
         params.require(:location).permit(:name)
+    end
+
+    def redirect_if_not_authorized 
+        @trip = Trip.find(params[:trip_id])
+        if current_user == nil || @trip.user.id != current_user.id
+            redirect_to root_path
+            flash[:message] = "You're not authorized to view that page."
+        end
     end
 end
