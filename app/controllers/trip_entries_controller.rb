@@ -15,7 +15,6 @@ class TripEntriesController < ApplicationController
 
     def create
         @trip_entry = TripEntry.new(trip_entry_params)
-        byebug
         if @trip_entry.save
             redirect_to root_path
         else 

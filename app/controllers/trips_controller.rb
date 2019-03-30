@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+before_action :redirect_if_entry_nonexistent, only: [:show]
 before_action :redirect_if_not_authorized, only: [:show]
 before_action :redirect_if_not_logged_in, only: [:new, :index]
     def new 
@@ -39,6 +40,13 @@ before_action :redirect_if_not_logged_in, only: [:new, :index]
         def redirect_if_not_logged_in
             if !logged_in? 
                 redirect_to welcome_path 
+            end
+        end
+
+        def redirect_if_entry_nonexistent 
+            if @trip == nil 
+                redirect_to welcome_path 
+                flash[:message] = "That trip doesn't exist!"
             end
         end
 
