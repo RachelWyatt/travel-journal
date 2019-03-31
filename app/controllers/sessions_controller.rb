@@ -14,8 +14,27 @@ class SessionsController < ApplicationController
         end
     end
 
+    def create_from_github
+        @user = User.find_or_create_by(email: auth[:info][:nickname]) do |user|
+            user.password = SecureRandom.hex
+        end
+        session[:user_id] = @user.id
+        if logged_in?
+            flash[:message] = "Successfully authenticated via GitHub!"
+        else 
+            flash[:message]= "Something went wrong."
+        end
+        redirect_to root_path
+    end
+
     def destroy
         session.clear 
         redirect_to root_path
+    end
+
+    private 
+
+    def auth 
+        request.env['omniauth.auth']
     end
 end

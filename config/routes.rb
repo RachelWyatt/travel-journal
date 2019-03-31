@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'trips#index'
   get '/welcome', to: 'static#welcome'
 
+  get '/auth/github/callback', to: 'sessions#create_from_github'
+
   resources :trips do 
     resources :trip_entries, shallow: true
   end
