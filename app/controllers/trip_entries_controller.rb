@@ -15,9 +15,11 @@ class TripEntriesController < ApplicationController
     end
 
     def create
+
+        @trip = Trip.find(params[:trip_id])
         @trip_entry = TripEntry.new(trip_entry_params)
         if @trip_entry.save
-            redirect_to root_path
+            redirect_to trip_path(@trip)
         else 
             render 'trip_entries/new'
         end
