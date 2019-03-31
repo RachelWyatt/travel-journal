@@ -4,8 +4,4 @@ class User < ApplicationRecord
     has_many :trip_entries, through: :trips
     validates :email, uniqueness: true
 
-    def sort_by_most_recent
-        entries = self.trip_entries.all 
-        entries.order("created_at DESC")
-    end
 end

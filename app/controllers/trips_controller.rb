@@ -22,7 +22,7 @@ before_action :redirect_if_not_logged_in, only: [:new, :index]
     end
 
     def index 
-        @trips = current_user.trips.all
+        @trips = current_user.trips.descending_order
     end
     
     private 

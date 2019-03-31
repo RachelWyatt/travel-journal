@@ -1,5 +1,6 @@
 class TripEntriesController < ApplicationController
-before_action :redirect_if_not_authorized, only: [:index]
+    helper TripEntriesHelper
+    before_action :redirect_if_not_authorized, only: [:index]
     def index 
         if params[:trip_id]
             @trip = Trip.find(params[:trip_id])
@@ -46,5 +47,10 @@ before_action :redirect_if_not_authorized, only: [:index]
             redirect_to root_path
             flash[:message] = "You're not authorized to view that page."
         end
+    end
+
+    def sort_by_most_recent(entries)
+        entries = TripEntries.all 
+       entries.order("created_at DESC")
     end
 end
