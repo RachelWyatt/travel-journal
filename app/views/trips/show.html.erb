@@ -4,7 +4,7 @@
 <% @trip_entries.each do |e|%>
     <span class = "border p-3">
     <div class="col col-md-auto ml-md-auto">
-    <%= link_to "#{e.journal_entry}", trip_entry_path(e)%>
+    <%= e.journal_entry%>
     </div>
     </span>
     <br>
