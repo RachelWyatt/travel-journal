@@ -4,7 +4,10 @@
 <% @trip_entries.each do |e|%>
     <div class="col col-md-auto ml-md-auto">
     <div class="card">
-    <div class="card-body"><%= e.journal_entry%></div>
+    <div class="card-body">
+    <h5 class="card-title"><%=e.location.name%> </h5>
+    <p class="card-text"><%= e.journal_entry%></p>
+    </div>
     </div>
     <br>
     </div>
