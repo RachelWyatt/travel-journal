@@ -1,16 +1,17 @@
-<h2 class = "ml-5"><%= @trip.name %></h2><br>
+<h1 class = "ml-5"><%= @trip.name %></h1><br>
 <div class="container p-3">
 <div class="row justify-content-md-center">
 <% @trip_entries.each do |e|%>
-    <span class = "border p-3">
     <div class="col col-md-auto ml-md-auto">
-    <%= e.journal_entry%>
+    <div class="card">
+    <div class="card-body"><%= e.journal_entry%></div>
     </div>
-    </span>
     <br>
+    </div>
+
 <% end %>
 </div>
 </div>
 
-<button type = "button" class="btn btn-outline-primary ml-5"> <%=link_to "Add an Entry to this trip", new_trip_trip_entry_path(@trip)%></button>
-<button type = "button" class="btn btn-outline-primary ml-5"> <%=link_to "Create a new location", new_location_path%></button>
+<button type = "button" class="btn btn-link"> <%=link_to "Add an Entry to this trip", new_trip_trip_entry_path(@trip)%></button>
+<button type = "button" class="btn btn-link"> <%=link_to "Create a new location", new_location_path%></button>
