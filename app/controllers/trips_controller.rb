@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 before_action :redirect_if_entry_nonexistent, only: [:show]
 before_action :redirect_if_not_authorized, only: [:show]
 before_action :redirect_if_not_logged_in, only: [:new, :index]
+
     def new 
         @trip = Trip.new
     end
