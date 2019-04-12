@@ -11,11 +11,11 @@
 <%end%>
 
 <%= form_for @location, url: locations_path do |f|%>
-<div class="form-group">
-<%= f.label :name %>
-<%= f.text_field :name%>
-</div>
-<br>
-<%= f.submit 'Create Location', :class => "btn btn-primary" %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+  </div>
+  <br>
+  <%= f.submit 'Create Location', :class => "btn btn-primary" %>
 <% end %>
 </div>

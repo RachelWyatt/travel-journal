@@ -1,10 +1,10 @@
 <div class = "ml-5">
 <%= form_for @trip do |f|%>
-<div class="form-group">
-<%= f.label :name %>
-<%= f.text_field :name%>
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name%>
 </form>
-<%= f.hidden_field :user_id %><br>
-<%= f.submit 'Create Trip', :class => "btn btn-primary" %>
+    <%= f.hidden_field :user_id %><br>
+    <%= f.submit 'Create Trip', :class => "btn btn-primary" %>
 <% end %>
 </div>
