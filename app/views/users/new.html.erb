@@ -1,10 +1,11 @@
 <h2> Sign up for a new account </h2>
 
-<%if @user.errors%>
-    <% @user.errors.full_messages.each do |error|%>
-        <%= error %>
-    <%br%>
+<%if @user.errors.any?%>
+    <div class="alert alert-warning" role="alert">
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
     <% end %>
+    </div>
 <% end %>
 
 <%=form_for @user, url: signup_path do |f|%>

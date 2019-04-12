@@ -1,2 +1,9 @@
 <h2 class="ml-5"> Create a New Trip </h2>
+<%if @trip.errors.any?%>
+    <div class="alert alert-warning" role="alert">
+    <% @trip.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </div>
+<% end %>
 <%= render 'form'%>
