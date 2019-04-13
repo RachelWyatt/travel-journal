@@ -7,6 +7,7 @@
             <div class="card-body">
                 <h5 class="card-title"><%=e.location.name%> </h5>
                 <p class="card-text"><%= e.journal_entry%></p>
+                <h6 class="card-subtitle mb-2 text-muted"><%= e.created_at.strftime("%b %e, %Y at %l:%M %p")%></h6>
             </div>
         </div>   
         <br>
