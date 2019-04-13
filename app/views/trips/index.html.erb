@@ -9,5 +9,22 @@
     </span>
     <br>
 <%end%>
+<br>
+<h2 class= "ml-5"> Where You've Been: </h2><br>
+<% loc_array = []%>
+<% @trips.each do |t|%>
+        <%t.locations.each do |l|%>
+            <%loc_array << l.name%>
+        <% end %>
+<%end%>
+<%unique_location_array = loc_array.uniq!%>
+<%unique_location_array.each do |l|%>
+    <span class = "border p-3">
+    <div class="col col-md-auto ml-md-auto">
+    <%= l%>
+        </div>
+    </span>
+    <br>
+<%end%>
 </div>
 </div>
