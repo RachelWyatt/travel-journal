@@ -17,7 +17,7 @@ before_action :redirect_if_not_logged_in, only: [:new, :index]
     end
 
     def show 
-        @trip = Trip.find(params[:id])
+        set_trip
         @trip_entries = @trip.trip_entries
         @trip_entry = TripEntry.new
     end
@@ -33,7 +33,7 @@ before_action :redirect_if_not_logged_in, only: [:new, :index]
         end
 
         def redirect_if_not_authorized 
-            @trip = Trip.find(params[:id])
+            set_trip
             if current_user == nil || @trip.user.id != current_user.id
                 redirect_to root_path
                 flash[:message] = "You're not authorized to view that page."
@@ -52,6 +52,10 @@ before_action :redirect_if_not_logged_in, only: [:new, :index]
                 redirect_to root_path
                 flash[:message] = "That trip doesn't exist!"
             end
+        end
+
+        def set_trip
+            @trip = Trip.find(params[:id])
         end
 
 end
