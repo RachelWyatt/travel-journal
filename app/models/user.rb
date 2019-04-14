@@ -6,12 +6,14 @@ class User < ApplicationRecord
 
     def user_locations 
         loc_array = []
-        trips.each do |t|
-            t.locations.each do |l|
-                loc_array << l.name
+        if trips.length > 1
+            trips.each do |t|
+                t.locations.each do |l|
+                    loc_array << l.name
+                end
             end
+            loc_array.uniq!
         end
-        loc_array.uniq!
     end
 
 end
