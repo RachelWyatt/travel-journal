@@ -15,13 +15,15 @@
 <div class="container p-3">
 <div class="row justify-content-md-center">
     <% if @current_user.user_locations %>
-    <%@current_user.user_locations.each do |l|%>
-        <span class = "border p-3">
-        <div class="col col-md-auto ml-md-auto">
-            <%=l%>
-        </div>
-        </span>
-     <%end%>
+        <%@current_user.user_locations.each do |l|%>
+            <span class = "border p-3">
+            <div class="col col-md-auto ml-md-auto">
+                <%=l%>
+            </div>
+            </span>
+        <%end%>
+    <% else %>
+        <%= link_to "Create a new location", new_location_path%>
      <%end%>
 </div>
 </div>
