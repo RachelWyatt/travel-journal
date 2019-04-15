@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
   get '/auth/github/callback', to: 'sessions#create_from_github'
 
+  resources :trip_entries, only: [:show]
   resources :trips do 
-    resources :trip_entries, shallow: true
+    resources :trip_entries
   end
 
   resources :users, only: [:show]

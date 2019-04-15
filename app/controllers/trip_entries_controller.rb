@@ -14,6 +14,10 @@ class TripEntriesController < ApplicationController
         end
     end 
 
+    def show 
+        @trip_entry = TripEntry.find(params[:id])
+    end
+
     private 
     def trip_entry_params 
         params.require(:trip_entry).permit(:journal_entry, :trip_id, :location_id)
