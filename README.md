@@ -1,6 +1,6 @@
 # Rails Travel Journal (Flatiron School Portfolio Project 3 of 5)
 
-This is an app that allows a user to keep track of travels with short, bullet-journal-style entries. This was built using Ruby on Rails.
+This is an app that allows a user to keep track of travels with short, bullet-journal-style entries. This was built using Ruby on Rails, with Bootstrap (https://getbootstrap.com/) and Bootswatch (https://bootswatch.com/) styling templates.
 
 ## Getting Started
 
