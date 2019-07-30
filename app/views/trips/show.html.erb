@@ -2,17 +2,11 @@
 <div class="container p-3">
 <div class="row justify-content-md-center">
 <% @trip_entries.each do |e|%>
-    <div class="col col-md-auto ml-md-auto">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"><%=e.location.name%> </h5>
-                <p class="card-text"><%= e.journal_entry%></p>
-                <h6 class="card-subtitle mb-2 text-muted"><%= e.created_at.strftime("%b %e, %Y at %l:%M %p")%></h6>
-            </div>
-        </div>   
-        <br>
-    </div>
-
+    <blockquote class="blockquote text-center">
+                <p class="mb-0"><%= e.journal_entry%></p>
+                <footer class="blockquote-footer"><%=e.location.name%>, <%= e.created_at.strftime("%b %e, %Y")%> </footer>
+    </blockquote>
+<hr>
 <% end %>
 </div>
 </div>
